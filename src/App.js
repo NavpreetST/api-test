@@ -6,7 +6,7 @@ import Axios from "axios"
 
 function App() {
   const [name, setName] = useState("")
-  const [age, setAge] = useState()
+  const [person, setPerson] = useState(null)
 
 
 
@@ -14,7 +14,7 @@ function App() {
     const api = `https://api.agify.io/?name=${name}`
 
     Axios.get(api).then((res) =>{
-      setAge(res.data.age)
+      setPerson(res.data)
     })
     // Axios.get("https://api.agify.io/?name=")
   }
@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <input placeholder='ex. Soundwave' onChange={(event) => {setName(event.target.value)}} />
       <button onClick={apiHandler}>Predict Age</button>
-      <h1>Name:{name} Predicted Age:{age}</h1>
+      <h1>Name:{person?.name} Predicted Age:{person?.age}</h1>
     </div>
   );
 }
