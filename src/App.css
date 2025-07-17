@@ -1,38 +1,87 @@
+/* General Body and Font Styling */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34; /* Dark, desaturated background */
+  color: #abb2bf; /* Soft, off-white text for readability */
+}
+
+/* Main App Container */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* Main Title "Generate An Excuse" */
+.App h1:first-child {
+  font-size: 2.5rem;
+  font-weight: 300; /* Lighter font for a modern feel */
+  color: #ffffff;
+  margin-bottom: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Button Styling */
+button {
+  background-color: #3a3f4b; /* Flat, matte gray */
+  color: #dcdfe4;
+  border: 1px solid #595f70; /* Subtle border for definition */
+  border-radius: 8px;
+  padding: 12px 28px;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Button Hover and Active States */
+button:hover {
+  background-color: #61afef; /* Muted blue accent color on hover */
+  border-color: #61afef;
+  color: #282c34;
+}
+
+button:active {
+  transform: scale(0.98); /* Slight press-down effect */
+}
+
+/* Styling for the generated excuse text */
+/* This targets the first H1 after the buttons */
+h1:nth-of-type(2) {
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff;
+  background-color: #2c313a; /* Slightly different shade for emphasis */
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  margin-top: 2.5rem;
+  min-height: 40px; /* Prevents layout shift when content loads */
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* Styling for the category text */
+/* This targets the second H1 after the buttons */
+h1:nth-of-type(3) {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #61afef; /* Use the accent color for the category tag */
+  border: 1px solid #61afef;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: -10px; /* Position it nicely below the excuse */
+  display: inline-block; /* Make the border wrap the text */
+  background-color: #282c34;
 }

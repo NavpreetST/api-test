@@ -1,29 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { useEffect, useState } from 'react';
 import Axios from "axios"
 
 
 function App() {
-  const [name, setName] = useState("")
-  const [person, setPerson] = useState(null)
+ 
+  const [reason, setExcuse] = useState(null)
 
 
-
-  const apiHandler = (event) =>{
-    const api = `https://api.agify.io/?name=${name}`
-
-    Axios.get(api).then((res) =>{
-      setPerson(res.data)
+  const fetchExcuse = (category) =>{
+    const api = `https://excuser-three.vercel.app/v1/excuse/${category}/`
+    Axios.get(api).then((res)=>{
+      // console.log(res.data)
+      setExcuse(res.data[0])
     })
-    // Axios.get("https://api.agify.io/?name=")
   }
-  
+ 
+
   return (
     <div className="App">
-      <input placeholder='ex. Soundwave' onChange={(event) => {setName(event.target.value)}} />
-      <button onClick={apiHandler}>Predict Age</button>
-      <h1>Name:{person?.name} Predicted Age:{person?.age}</h1>
+      <h1>Generate An Excuse</h1>
+      <button onClick={() =>fetchExcuse('party')}> Party</button>
+      <button onClick={() =>fetchExcuse('family')}> Family</button>
+      <button onClick={() =>fetchExcuse('office')}> Office</button>
+
+      <h1>{reason?.excuse} </h1> 
+      
+      <h1>{reason?.category}</h1>
     </div>
   );
 }
