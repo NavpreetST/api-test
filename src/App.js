@@ -2,26 +2,30 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import Axios from "axios"
+
+
 function App() {
+  const [name, setName] = useState("")
+  const [age, setAge] = useState()
 
-  useEffect(() =>{
-    Axios.get("https://catfact.ninja/fact").then((res)=>{
-      setCatFact(res.data.fact)
+
+
+  const apiHandler = (event) =>{
+    const api = `https://api.agify.io/?name=${name}`
+
+    Axios.get(api).then((res) =>{
+      setAge(res.data.age)
     })
-
-  },[])
-  const [catFact, setCatFact] = useState("")
+    // Axios.get("https://api.agify.io/?name=")
+  }
+  
   return (
     <div className="App">
-      <button onClick={console.log("Hi")}>Generate Cat Fact</button>
-      <h1>{catFact}</h1>
+      <input placeholder='ex. Soundwave' onChange={(event) => {setName(event.target.value)}} />
+      <button onClick={apiHandler}>Predict Age</button>
+      <h1>Name:{name} Predicted Age:{age}</h1>
     </div>
   );
 }
 
 export default App;
-
-
-// fetch("https://catfact.ninja/fact").then((res)=>res.json()).then((data)=>{
-//     console.log(data)
-//   })
